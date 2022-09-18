@@ -6,6 +6,8 @@ import "@/styles/reset.scss";
 import ElementPlus from "element-plus";
 // Element icons
 import * as Icons from "@element-plus/icons-vue";
+// CSS common style sheet
+import "@/styles/common.scss";
 // element css(如果使用了CDN，不需要引入css)
 // import "element-plus/dist/index.css";
 // vue Router
