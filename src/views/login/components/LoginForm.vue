@@ -1,5 +1,10 @@
 <template>
-  <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
+  <el-form
+    ref="loginFormRef"
+    :model="loginForm"
+    :rules="loginRules"
+    size="large"
+  >
     <el-form-item prop="username">
       <el-input v-model="loginForm.username" placeholder="用户名">
         <template #prefix>
@@ -8,7 +13,12 @@
       </el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input type="password" show-password v-model="loginForm.password" placeholder="密码">
+      <el-input
+        type="password"
+        show-password
+        v-model="loginForm.password"
+        placeholder="密码"
+      >
         <template #prefix>
           <el-icon class="el-input__icon"><lock /></el-icon>
         </template>
@@ -16,105 +26,111 @@
     </el-form-item>
   </el-form>
   <div class="login-btn">
-    <el-button :icon="CircleClose" round @click="resetForm(loginFormRef)">重置</el-button>
-    <el-button type="primary" :loading="loading" :icon="UserFilled" round @click="login(loginFormRef)">登录</el-button>
+    <el-button
+      :icon="CircleClose"
+      round
+      @click="resetForm(loginFormRef)"
+      size="large"
+      >重置</el-button
+    >
+    <el-button
+      :icon="UserFilled"
+      round
+      @click="login(loginFormRef)"
+      size="large"
+      type="primary"
+      :loading="loading"
+      >登录</el-button
+    >
   </div>
   <!-- <el-button @click="submitParent">触发父组件方法</el-button> -->
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, inject } from "vue";
-import { useRouter } from "vue-router";
-import { LoginFrom, InjectProps } from "../types/index";
-import { CircleClose, UserFilled } from "@element-plus/icons-vue";
-import type { ElForm } from "element-plus";
-import { ElMessage } from "element-plus";
-
+import { ref, reactive, inject } from 'vue'
+import { useRouter } from 'vue-router'
+import { LoginFrom, InjectProps } from '../types/index'
+import { CircleClose, UserFilled } from '@element-plus/icons-vue'
+import type { ElForm } from 'element-plus'
+import { ElMessage } from 'element-plus'
 // inject
-const provideState = inject("provideState") as InjectProps;
-console.log(provideState.age);
-provideState.changeName();
-
+const provideState = inject('provideState') as InjectProps
+console.log(provideState.age)
+provideState.changeName()
 // 定义 formRef（校验规则）
-type FormInstance = InstanceType<typeof ElForm>;
-const loginFormRef = ref<FormInstance>();
+type FormInstance = InstanceType<typeof ElForm>
+const loginFormRef = ref<FormInstance>()
 const loginRules = reactive({
-  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-  password: [{ required: true, message: "请输入密码", trigger: "blur" }]
-});
-
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+})
 // 登录表单数据
 const loginForm = reactive<LoginFrom>({
-  username: "admin",
-  password: "123456"
-});
-const loading = ref<boolean>(false);
-
-const router = useRouter();
+  username: 'admin',
+  password: '123456'
+})
+const loading = ref<boolean>(false)
+const router = useRouter()
 // login
 const login = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.validate(valid => {
+  if (!formEl) return
+  formEl.validate((valid) => {
     if (valid) {
-      loading.value = true;
+      loading.value = true
       setTimeout(() => {
-        loading.value = false;
-        ElMessage.success("登录成功");
-        router.push({ name: "home" });
-      }, 800);
+        loading.value = false
+        ElMessage.success('登录成功!')
+        router.push({ name: 'home' })
+      }, 800)
     } else {
-      return false;
+      return false
     }
-  });
-};
-
+  })
+}
 // reset
 const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-};
-
+  if (!formEl) return
+  formEl.resetFields()
+}
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
-  age?: string;
-  address?: string[];
+  age?: string
+  address?: string[]
   obj?: {
-    username: string;
-    password: string;
-  };
+    username: string
+    password: string
+  }
 }
 const props = withDefaults(defineProps<ParentProps>(), {
-  age: "18",
-  address: () => ["新希望国际", "伏龙小区"],
+  age: '18',
+  address: () => ['新希望国际', '伏龙小区'],
   obj: () => {
     return {
-      username: "admin",
-      password: "123456"
-    };
+      username: 'admin',
+      password: '123456'
+    }
   }
-});
-console.log(props);
+})
+console.log(props)
 // 接收父组件参数（采用ts专有声明，无默认值）
 // const props1 = defineProps<{ item: string }>();
 // console.log(props1);
-
 // 子组件向父组件传输数据（触发父组件的submitParent方法）
 const emit = defineEmits<{
-  (e: "submitParent", LoginFrom: LoginFrom): void;
-}>();
+  (e: 'submitParent', LoginFrom: LoginFrom): void
+}>()
 const submitParent = () => {
-  emit("submitParent", loginForm);
-};
-
+  emit('submitParent', loginForm)
+}
 // 子组件数据暴露给父组件
-const count = ref<number>(2111);
+const count = ref<number>(2111)
 const consoleNumber = (name: string): void => {
-  console.log("我是子组件打印的数据", name);
-};
+  console.log('我是子组件打印的数据', name)
+}
 defineExpose({
   count,
   consoleNumber
-});
+})
 </script>
 
 <style scoped lang="scss">

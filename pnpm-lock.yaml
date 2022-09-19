@@ -5,6 +5,7 @@ specifiers:
   '@types/node': ^18.7.18
   '@vitejs/plugin-vue': ^3.1.0
   axios: ^0.27.2
+  echarts: ^5.3.3
   element-plus: ^2.2.17
   nprogress: ^0.2.0
   path: ^0.12.7
@@ -23,6 +24,7 @@ dependencies:
   '@element-plus/icons-vue': 2.0.9_vue@3.2.39
   '@types/node': 18.7.18
   axios: 0.27.2
+  echarts: 5.3.3
   element-plus: 2.2.17_vue@3.2.39
   nprogress: 0.2.0
   path: 0.12.7
@@ -406,6 +408,13 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+    dev: false
+
+  /echarts/5.3.3:
+    resolution: {integrity: sha512-BRw2serInRwO5SIwRviZ6Xgm5Lb7irgz+sLiFMmy/HOaf4SQ+7oYqxKzRHAKp4xHQ05AuHw1xvoQWJjDQq/FGw==}
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.3.2
     dev: false
 
   /element-plus/2.2.17_vue@3.2.39:
@@ -1034,6 +1043,10 @@ packages:
     dependencies:
       is-number: 7.0.0
 
+  /tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+    dev: false
+
   /typescript/4.8.3:
     resolution: {integrity: sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/typescript/-/typescript-4.8.3.tgz}
     engines: {node: '>=4.2.0'}
@@ -1243,3 +1256,9 @@ packages:
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
+
+  /zrender/5.3.2:
+    resolution: {integrity: sha512-8IiYdfwHj2rx0UeIGZGGU4WEVSDEdeVCaIg/fomejg1Xu6OifAL1GVzIPHg2D+MyUkbNgPWji90t0a8IDk+39w==}
+    dependencies:
+      tslib: 2.3.0
+    dev: false
