@@ -74,6 +74,13 @@ declare namespace API {
   }
 }
 
+interface Props {
+  a: string;
+  b: number;
+}
+
+type Result1 = Result<{ a: string; b: number }>;
+
 declare type Result<T> = {
   [K in keyof T]: T[K];
 };

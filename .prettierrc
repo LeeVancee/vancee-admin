@@ -7,7 +7,7 @@
 
   "semi": true,
 
-  "singleQuote": false,
+  "singleQuote": true,
 
   "quoteProps": "as-needed",
 

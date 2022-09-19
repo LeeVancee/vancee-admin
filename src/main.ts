@@ -13,9 +13,13 @@ import "@/styles/common.scss";
 // vue Router
 import router from "../src/router";
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { createPinia } from "pinia";
+// pinia persist
+import piniaPersist from "pinia-plugin-persist";
 
 const app = createApp(App);
-
+const pinia = createPinia();
+pinia.use(piniaPersist);
 // 注册element Icons组件
 Object.keys(Icons).forEach(key => {
   app.component(key, Icons[key as keyof typeof Icons]);
@@ -24,4 +28,4 @@ app.use(ElementPlus, {
   locale: zhCn,
 })
 
-app.use(router).use(ElementPlus).mount("#app");
+app.use(router).use(ElementPlus).use(pinia).mount("#app");
