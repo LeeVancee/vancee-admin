@@ -7,17 +7,26 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve:{
-    alias:{
-      "@": path.resolve(__dirname,'./src')
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
     }
   },
-  plugins: [vue(),
+  // global css
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/var.scss";`
+      }
+    }
+  },
+  plugins: [
+    vue(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+      resolvers: [ElementPlusResolver()]
+    })
   ]
 })
