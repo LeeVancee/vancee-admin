@@ -1,9 +1,7 @@
 <template>
   <div class="header">
     <div class="header-lf flx-center">
-      <el-icon class="collapse-icon" @click="menuStore.setCollapse()">
-        <component :is="isCollapse ? 'expand' : 'fold'"></component>
-      </el-icon>
+      <CollapseIcon></CollapseIcon>
       <Breadcrumb />
     </div>
     <div class="header-ri flx-center">
@@ -32,6 +30,7 @@ import Breadcrumb from './components/Breadcrumb.vue'
 import Avatar from './components/Avatar.vue'
 import AssemblySize from './components/AssemblySize.vue'
 import Fullscreen from './components/Fullscreen.vue'
+import CollapseIcon from './components/CollapseIcon.vue'
 
 const menuStore = MenuStore()
 
