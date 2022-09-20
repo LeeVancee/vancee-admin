@@ -16,6 +16,12 @@ console.log(ResultEnum[10000])
 const data: Props<string> = {
   username: 'string'
 }
+interface PropsSay {
+  say<T>(value: T): T
+}
+interface PropsNumber<T, U> {
+  (a: T, b: U): number
+}
 // console.log(store, data);
 </script>
 
