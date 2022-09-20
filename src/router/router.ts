@@ -12,27 +12,16 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'login',
-    component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
     meta: {
       requiresAuth: false,
       title: '登录页',
       key: 'login'
     }
   },
-  {
-    path: '/layout',
-    name: 'layout',
-    component: () =>
-      import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
-    meta: {
-      requiresAuth: true,
-      title: 'layout页',
-      key: 'layout'
-    },
-    redirect: { name: 'home' },
-    children: [...homeRouter, ...tableRouter]
-  },
+  ...homeRouter,
+  ...echartsRouter,
+  ...tableRouter,
   ...errorRouter,
   {
     // 找不到路由重定向到404页面
