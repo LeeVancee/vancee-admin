@@ -26,6 +26,7 @@ import menuListJson from './json/menu.json'
 
 const route = useRoute()
 const menuStore = MenuStore()
+console.log(menuStore)
 
 // set menuList
 menuStore.setMenuList(menuListJson)
@@ -43,10 +44,8 @@ const listeningWindow = () => {
     return (() => {
       screenWidth.value = document.body.clientWidth
       screenHeight.value = document.body.clientHeight
-      if (isCollapse.value === false && screenWidth.value < 1200)
-        menuStore.setCollapse()
-      if (isCollapse.value === true && screenWidth.value > 1200)
-        menuStore.setCollapse()
+      if (isCollapse.value === false && screenWidth.value < 1200) menuStore.setCollapse()
+      if (isCollapse.value === true && screenWidth.value > 1200) menuStore.setCollapse()
     })()
   }
 }
