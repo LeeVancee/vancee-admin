@@ -1,10 +1,5 @@
 <template>
-  <el-form
-    ref="loginFormRef"
-    :model="loginForm"
-    :rules="loginRules"
-    size="large"
-  >
+  <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
     <el-form-item prop="username">
       <el-input v-model="loginForm.username" placeholder="用户名">
         <template #prefix>
@@ -13,12 +8,7 @@
       </el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input
-        type="password"
-        show-password
-        v-model="loginForm.password"
-        placeholder="密码"
-      >
+      <el-input type="password" show-password v-model="loginForm.password" placeholder="密码">
         <template #prefix>
           <el-icon class="el-input__icon"><lock /></el-icon>
         </template>
@@ -26,11 +16,7 @@
     </el-form-item>
   </el-form>
   <div class="login-btn">
-    <el-button
-      :icon="CircleClose"
-      round
-      @click="resetForm(loginFormRef)"
-      size="large"
+    <el-button :icon="CircleClose" round @click="resetForm(loginFormRef)" size="large"
       >重置</el-button
     >
     <el-button
@@ -40,8 +26,9 @@
       size="large"
       type="primary"
       :loading="loading"
-      >登录</el-button
     >
+      登录
+    </el-button>
   </div>
   <!-- <el-button @click="submitParent">触发父组件方法</el-button> -->
 </template>
@@ -53,9 +40,11 @@ import { LoginFrom, InjectProps } from '../types/index'
 import { CircleClose, UserFilled } from '@element-plus/icons-vue'
 import type { ElForm } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import { loginApi } from '@/api/modules/login'
+import md5 from 'js-md5'
 // inject
 const provideState = inject('provideState') as InjectProps
-console.log(provideState.age)
+// console.log(provideState.age);
 provideState.changeName()
 // 定义 formRef（校验规则）
 type FormInstance = InstanceType<typeof ElForm>
@@ -67,21 +56,30 @@ const loginRules = reactive({
 // 登录表单数据
 const loginForm = reactive<LoginFrom>({
   username: 'admin',
-  password: '123456'
+  password: '00000000'
 })
 const loading = ref<boolean>(false)
 const router = useRouter()
 // login
 const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.validate((valid) => {
+  formEl.validate(async (valid) => {
     if (valid) {
       loading.value = true
-      setTimeout(() => {
-        loading.value = false
-        ElMessage.success('登录成功!')
+      try {
+        let requestLoginForm: LoginFrom = {
+          username: loginForm.username,
+          password: md5(loginForm.password)
+        }
+        const res = await loginApi(requestLoginForm)
+        console.log(res)
+        ElMessage.success('登录成功！')
         router.push({ name: 'home' })
-      }, 800)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        loading.value = false
+      }
     } else {
       return false
     }
@@ -103,7 +101,7 @@ interface ParentProps {
 }
 const props = withDefaults(defineProps<ParentProps>(), {
   age: '18',
-  address: () => ['新希望国际', '伏龙小区'],
+  address: () => ['新希望国际', '天府三街'],
   obj: () => {
     return {
       username: 'admin',
@@ -111,7 +109,7 @@ const props = withDefaults(defineProps<ParentProps>(), {
     }
   }
 })
-console.log(props)
+// console.log(props);
 // 接收父组件参数（采用ts专有声明，无默认值）
 // const props1 = defineProps<{ item: string }>();
 // console.log(props1);

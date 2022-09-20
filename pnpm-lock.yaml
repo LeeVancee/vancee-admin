@@ -2,12 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   '@element-plus/icons-vue': ^2.0.9
+  '@types/js-md5': ^0.4.3
   '@types/node': ^18.7.18
   '@vitejs/plugin-vue': ^3.1.0
   '@vueuse/core': ^9.2.0
   axios: ^0.27.2
   echarts: ^5.3.3
   element-plus: ^2.2.17
+  js-md5: ^0.7.3
   nprogress: ^0.2.0
   path: ^0.12.7
   pinia: ^2.0.22
@@ -23,11 +25,13 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.0.9_vue@3.2.39
+  '@types/js-md5': 0.4.3
   '@types/node': 18.7.18
   '@vueuse/core': 9.2.0_vue@3.2.39
   axios: 0.27.2
   echarts: 5.3.3
   element-plus: 2.2.17_vue@3.2.39
+  js-md5: 0.7.3
   nprogress: 0.2.0
   path: 0.12.7
   pinia: 2.0.22_arz4dztosvwy2ghjrlh2wdhejm
@@ -136,6 +140,10 @@ packages:
 
   /@sxzz/popperjs-es/2.11.7:
     resolution: {integrity: sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ==}
+    dev: false
+
+  /@types/js-md5/0.4.3:
+    resolution: {integrity: sha512-BIga/WEqTi35ccnGysOuO4RmwVnpajv9oDB/sDQSY2b7/Ac7RyYR30bv7otZwByMvOJV9Vqq6/O1DFAnOzE4Pg==}
     dev: false
 
   /@types/lodash-es/4.17.6:
@@ -759,6 +767,10 @@ packages:
   /is-number/7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
+
+  /js-md5/0.7.3:
+    resolution: {integrity: sha512-ZC41vPSTLKGwIRjqDh8DfXoCrdQIyBgspJVPXHBGu4nZlAEvG3nf+jO9avM9RmLiGakg7vz974ms99nEV0tmTQ==}
+    dev: false
 
   /jsonc-parser/3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/jsonc-parser/-/jsonc-parser-3.2.0.tgz}
