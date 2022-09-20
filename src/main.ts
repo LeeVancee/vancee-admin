@@ -6,6 +6,8 @@ import '@/styles/reset.scss'
 import '@/styles/common.scss'
 // iconfont css
 import '@/assets/iconfont/iconfont.css'
+// element scc
+import '@/styles/element.scss'
 // element plus
 import ElementPlus from 'element-plus'
 // Element icons
