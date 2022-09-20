@@ -19,8 +19,11 @@ onMounted(() => {
   getTableList()
 })
 const getTableList = async () => {
-  // const res = await getSystemLog({});
-  // console.log(res);
+  const res = await getSystemLog({})
+  console.log(res)
+  res.data.datalist.forEach((item) => {
+    console.log(item.bfData)
+  })
 }
 const { online } = useOnline()
 // console.log(online.value);
