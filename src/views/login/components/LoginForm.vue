@@ -41,7 +41,10 @@ import { CircleClose, UserFilled } from '@element-plus/icons-vue'
 import type { ElForm } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { loginApi } from '@/api/modules/login'
+import { GlobalStore } from '@/store'
 import md5 from 'js-md5'
+
+const globalStore = GlobalStore()
 // inject
 const provideState = inject('provideState') as InjectProps
 // console.log(provideState.age);
@@ -74,6 +77,7 @@ const login = (formEl: FormInstance | undefined) => {
         const res = await loginApi(requestLoginForm)
         console.log(res)
         ElMessage.success('登录成功！')
+        globalStore.setToken(res.data.tokenValue)
         router.push({ name: 'home' })
       } catch (error) {
         console.log(error)

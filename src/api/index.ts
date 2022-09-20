@@ -48,7 +48,7 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
         const { data } = response
-        if (data.code === 200) {
+        if (response.status === 200) {
           return data
         } else {
           ElMessage.error(data.msg)
