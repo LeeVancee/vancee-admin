@@ -48,6 +48,7 @@
 
 	// el-table 表格样式
 	.el-table {
+		//表格自适应撑满整个页面（这只了flex：1，页面表格必须添加上height属性）
 		flex: 1;
 		.el-table__header th,
 		.el-table__body td {
@@ -66,12 +67,16 @@
 		.el-button--text {
 			height: 0;
 		}
+		//解决表格空白样式不居中的问题（element plus）
 		.table-empty {
 			line-height: 30px;
 		}
 		.el-scrollbar__view {
 			display: flex !important;
-			height: 100%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
 		}
 	}
 
