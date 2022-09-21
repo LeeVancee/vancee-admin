@@ -1,8 +1,8 @@
 {
-  "name": "geeker-admin",
+  "name": "Vancee-admin",
   "private": true,
   "version": "0.0.1",
-  "description": "Geeker-Admin后台管理系统",
+  "description": "Vancee-Admin后台管理系统",
   "author": "SpicyBoy <848130454@qq.com>",
   "scripts": {
     "dev": "vite",
