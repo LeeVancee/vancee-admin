@@ -10,7 +10,8 @@ import {
   View,
   Setting,
   ArrowDown,
-  ArrowUp
+  ArrowUp,
+  Upload
 } from '@element-plus/icons-vue'
 import { isArray } from '@/utils/is'
 
@@ -62,7 +63,8 @@ export const useTable = (
     View,
     Setting,
     ArrowDown,
-    ArrowUp
+    ArrowUp,
+    Upload
   })
 
   /**

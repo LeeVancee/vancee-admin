@@ -3,7 +3,7 @@
 	z-index: 99999 !important;
 }
 
-// * 表格样式
+// * el-table 样式
 .table-box {
 	display: flex;
 	flex-direction: column;
@@ -28,11 +28,9 @@
 			margin-left: 10px;
 			.search-isOpen {
 				margin-left: 20px;
-				
 			}
 		}
 	}
-
 	// 表格 header 样式
 	.table-header {
 		padding: 10px 0 20px 0;
@@ -43,10 +41,9 @@
 			float: right;
 		}
 	}
-
 	// el-table 表格样式
 	.el-table {
-		//表格自适应撑满整个页面（这只了flex：1，页面表格必须添加上height属性）
+		// 表格自适应撑满整个页面(设置了 flex:1,页面上表格必须添加 height 属性)
 		flex: 1;
 		.el-table__header th,
 		.el-table__body td {
@@ -65,23 +62,56 @@
 		.el-button--text {
 			height: 0;
 		}
-		//解决表格空白样式不居中的问题（element plus）
+		// 解决表格空白样式不居中问题(仅在element-plus中)
 		.table-empty {
 			line-height: 30px;
-		}
-		.el-scrollbar__view {
-			display: flex !important;
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
 		}
 	}
-
 	// 表格 pagination 样式
 	.el-pagination {
 		display: flex;
 		margin: 23px 0 10px 0;
 		justify-content: flex-end;
+	}
+}
+
+// * el-drawer 样式
+.el-drawer {
+	// drawer header 样式
+	.el-drawer__header {
+		border-bottom: 1px solid #ebeef5;
+		padding: 15px 20px 14px 20px;
+		margin-bottom: 0px;
+		span {
+			font-size: 17px;
+			color: #303133;
+		}
+	}
+	// drawer header 样式
+	.el-drawer__footer {
+		border-top: 1px solid #ebeef5;
+	}
+	// drawer-form 多列
+	.drawer-multiColumn-form {
+		display: flex;
+		flex-wrap: wrap;
+		.el-form-item {
+			width: 47%;
+			&:nth-child(2n-1) {
+				margin-right: 5%;
+			}
+		}
+	}
+}
+
+// * el-dialog 样式
+.el-dialog {
+	.el-dialog__header {
+		border-bottom: 1px solid #f0f0f0;
+		margin: 0;
 	}
 }

@@ -27,8 +27,8 @@ const router = useRouter()
 // logout
 const logout = () => {
   ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
-    confirmButtonText: 'OK',
-    cancelButtonText: 'Cancel',
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
     router.push({ name: 'login' })
