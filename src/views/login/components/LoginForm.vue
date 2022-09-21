@@ -45,10 +45,12 @@ import { GlobalStore } from '@/store'
 import md5 from 'js-md5'
 
 const globalStore = GlobalStore()
+
 // inject
 const provideState = inject('provideState') as InjectProps
 console.log(provideState.age)
 provideState.changeName()
+
 // 定义 formRef（校验规则）
 type FormInstance = InstanceType<typeof ElForm>
 const loginFormRef = ref<FormInstance>()
@@ -56,12 +58,14 @@ const loginRules = reactive({
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
+
 // 登录表单数据
 const loginForm = reactive<LoginFrom>({
   username: 'admin',
   password: '00000000'
 })
 const loading = ref<boolean>(false)
+
 const router = useRouter()
 // login
 const login = (formEl: FormInstance | undefined) => {
@@ -76,8 +80,8 @@ const login = (formEl: FormInstance | undefined) => {
         }
         const res = await loginApi(requestLoginForm)
         console.log(res)
-        ElMessage.success('登录成功！')
         globalStore.setToken(res.data.tokenValue)
+        ElMessage.success('登录成功！')
         router.push({ name: 'home' })
       } catch (error) {
         console.log(error)
@@ -89,11 +93,13 @@ const login = (formEl: FormInstance | undefined) => {
     }
   })
 }
+
 // reset
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
   age?: string
@@ -117,13 +123,16 @@ const props = withDefaults(defineProps<ParentProps>(), {
 // 接收父组件参数（采用ts专有声明，无默认值）
 // const props1 = defineProps<{ item: string }>();
 // console.log(props1);
+
 // 子组件向父组件传输数据（触发父组件的submitParent方法）
 const emit = defineEmits<{
   (e: 'submitParent', LoginFrom: LoginFrom): void
 }>()
+
 const submitParent = () => {
   emit('submitParent', loginForm)
 }
+
 // 子组件数据暴露给父组件
 const count = ref<number>(2111)
 const consoleNumber = (name: string): void => {
