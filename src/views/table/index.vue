@@ -43,8 +43,9 @@
           plain
           :disabled="!isSelected"
           @click="batchDelete"
-          >批量删除</el-button
         >
+          批量删除
+        </el-button>
       </div>
       <el-tooltip effect="dark" content="刷新" placement="top">
         <el-button class="refresh" :icon="icon.Refresh" circle @click="getTableList"> </el-button>
@@ -100,7 +101,7 @@
           <el-button type="text" :icon="icon.View">查看</el-button>
           <el-button type="text" :icon="icon.EditPen">编辑</el-button>
           <el-button type="text" :icon="icon.Refresh">重置密码</el-button>
-          <el-button type="text" :icon="icon.Delete" @click="deleteSysLog(scope.row.ip)"
+          <el-button type="text" :icon="icon.Delete" @click="deleteAccount(scope.row.id)"
             >删除</el-button
           >
         </template>
@@ -126,10 +127,11 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { downLoadSystemLog, getAccountList } from '@/api/modules/system'
+import { downLoadSystemLog, getSysAccountList, deleteSysAccount } from '@/api/modules/system'
 import { useDownload } from '@/hooks/useDownload'
 import { useHandleData } from '@/hooks/useHandleData'
 import { useSelection } from '@/hooks/useSelection'
+import { useAuthButton } from '@/hooks/useAuthButton'
 import { useTable } from '@/hooks/useTable'
 import type { ElTable } from 'element-plus'
 
@@ -147,24 +149,28 @@ const {
   handleSizeChange,
   handleCurrentChange,
   defaultFormat
-} = useTable(getAccountList, tableRef)
+} = useTable(getSysAccountList, tableRef)
 
 const { isSelected, selectedListIds, selectionChange, getRowKeys } = useSelection()
+
+const { key } = useAuthButton()
+console.log(key.value)
 
 onMounted(() => {
   // 获取表格数据
   getTableList()
 })
 
-// 批量删除
-const batchDelete = async () => {
-  await useHandleData(getAccountList, { ids: selectedListIds.value }, '删除所选系统账号')
+// 删除系统账号
+const deleteAccount = async (id: string) => {
+  await useHandleData(deleteSysAccount, { id }, '删除该系统账号')
   getTableList()
 }
 
-// 删除日志
-const deleteSysLog = async (id: any) => {
-  await useHandleData(getAccountList, { id: id }, '删除该系统账号')
+// 批量删除系统账号
+const batchDelete = async () => {
+  console.log(selectedListIds.value)
+  await useHandleData(deleteSysAccount, { ids: selectedListIds.value }, '删除所选系统账号')
   getTableList()
 }
 
