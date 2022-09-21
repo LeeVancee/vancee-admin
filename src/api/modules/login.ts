@@ -1,7 +1,8 @@
 import { Login } from '@/api/interface/index'
 import { PORT1 } from '@/api/config/servicePort'
-import http from '@/api'
 import { LoginFrom } from '@/views/login/interface'
+
+import http from '@/api'
 
 /**
  * @name 登录模块

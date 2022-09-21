@@ -31,7 +31,7 @@
         </el-button>
       </div>
     </div>
-    <div class="table-header clearfix">
+    <div class="table-header">
       <div class="header-button">
         <el-button type="primary" :icon="icon.CirclePlus" @click="openDrawer('新增')"
           >新增系统账号</el-button
