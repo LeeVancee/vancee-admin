@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "description": "Vancee-Admin后台管理系统",
-  "author": "SpicyBoy <848130454@qq.com>",
+  "author": "",
   "scripts": {
     "dev": "vite",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
